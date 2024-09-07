@@ -4,15 +4,21 @@
 
 .Calculator-User-Input {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
+  gap: 1em;
 }
 
 .Calculator-Box {
-  border: 1px solid red;
-  width: 40%;
+  margin: 1em;
+  flex: 1 0 auto;
   display: flex;
   flex-direction: column;
   gap: .3em;
+}
+
+.Calculator-Result {
+  border: 1px solid white;
 }
 
 input {
