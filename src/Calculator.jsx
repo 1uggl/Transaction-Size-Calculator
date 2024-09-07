@@ -6,13 +6,13 @@ const Calculator = () => {
   const [sumOutputsSize, setSumOutputsSize] = useState(0)
   const [txSize, setTxSize] = useState(0);
   const [legacyInputs, setLegacyInputs] = useState(0);
-  const [segwitInputs, setSegwitInputs] = useState(0);
+  const [segwitInputs, setSegwitInputs] = useState(21);
   const [taprootInputs, setTaprootInputs] = useState(0);
   const [legacyOutputs, setLegacyOutputs] = useState(0);
-  const [segwitOutputs, setSegwitOutputs] = useState(0);
+  const [segwitOutputs, setSegwitOutputs] = useState(1);
   const [taprootOutputs, setTaprootOutputs] = useState(0);
-  const [futureFee, setFutureFee] = useState(1);
-  const [futurePrice, setFuturePrice] = useState(100000);
+  const [futureFee, setFutureFee] = useState(100);
+  const [futurePrice, setFuturePrice] = useState(1000000);
   const [priceSum, setPriceSum] = useState(1);
 
   useEffect(() => {
@@ -74,13 +74,16 @@ const Calculator = () => {
     setLegacyOutputs(0)
     setSegwitOutputs(0)
     setTaprootOutputs(0)
-    setFutureFee(1)
-    setFuturePrice(100000)
+    setFutureFee(100)
+    setFuturePrice(1000000)
   }
 
   return (
     <>
       <div className="Calculator">
+        <div className="Calculator-Box">
+          <h3>GM! Small UTXOs get to dust in high fee enviroments. Use this tool to visualize the impact of multiple inputs on the transaction size. Use the fee and fiat price input to see, how expensive moving your stack will be in enviroments e.g. with minimum fees at 100 sats/vByte and fiat price at $ 1,000,000!</h3>
+        </div>
         <div className="Calculator-User-Input">
           <div className="Calculator-Box">
             <h2>Enter the number and type of your Inputs</h2>
@@ -140,7 +143,7 @@ const Calculator = () => {
           </div>
           <div className="Calculator-Box">
             <h2>Enter future metrics</h2>
-            <label for="future-fees">Future Fees: </label>
+            <label for="future-fees">Fees for your transaction: </label>
             <input
               type="number"
               name="future-fees"
@@ -148,7 +151,7 @@ const Calculator = () => {
               value={futureFee}
               onChange={handleChangeFutureFees}
             />
-            <label for="future-price">Future price: </label>
+            <label for="future-price">Future fiat price: </label>
             <input
               type="number"
               name="future-price"
@@ -161,9 +164,17 @@ const Calculator = () => {
         </div>
         <div className="Calculator-Box">
           <h2>Result</h2>
-          <h3>Size of your Transaction: {txSize} vByte</h3>
-          <h3>Future Fees: {futureFee * txSize} vByte</h3>
-          <h3>Future Fees in Fiat: ${priceSum}</h3>
+          <h3>Your transaction size will be <span className="Calculator-Span-Result">{txSize}</span> vBytes. At the provided fee of <span className="Calculator-Span-Result">{futureFee}</span> sats/vBytes you will have to pay a total fee of <span className="Calculator-Span-Result">{futureFee * txSize}</span> sats equivalent to <span className="Calculator-Span-Result">{priceSum}</span> fiatcoins.</h3>
+          <div className="Calculator-Result-Box">
+            <div>
+              <h3>Size of your Transaction: <span className="Calculator-Span-Result">{txSize}</span> vByte</h3>
+              <h3> (includes 10.5 vByte for the Header)</h3>
+            </div>
+            <div>
+              <h3>Future Fees: <span className="Calculator-Span-Result">{futureFee * txSize}</span> sats</h3>
+              <h3>Future Fees in Fiat: <span className="Calculator-Span-Result">{priceSum}</span></h3>
+            </div>
+          </div>
         </div>
       </div>
     </>
