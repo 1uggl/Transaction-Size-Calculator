@@ -32,7 +32,7 @@ const Calculator = () => {
 
   useEffect(() => {
     const price = txSize * futureFee * futurePrice / 100000000
-    setPriceSum(price.toPrecision(2))
+    setPriceSum(price.toFixed(2));
   }, [futureFee, futurePrice, txSize])
 
   const handleChangeLegacyInputs = event => {
