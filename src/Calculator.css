@@ -1,0 +1,25 @@
+.Calculator {
+  padding: .5em;
+}
+
+.Calculator-User-Input {
+  display: flex;
+  justify-content: space-around;
+}
+
+.Calculator-Box {
+  border: 1px solid red;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: .3em;
+}
+
+input {
+  width: 10em;
+}
+
+button {
+  margin: 1em 0;
+  padding: 1em;
+}

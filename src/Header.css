@@ -1,0 +1,26 @@
+.Header {
+  display: flex;
+  padding: .5em;
+  gap: 1em;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid white;
+}
+
+.Header-contacts {
+  display: flex;
+  gap: .5em;
+}
+
+.Header-contacts a {
+  border-radius: 5px;
+  padding: .2em;
+color: white;
+  text-decoration: none;
+}
+
+.Header-contacts a:hover {
+color: black;
+  background-color: white;
+  text-decoration: none;
+}
