@@ -168,8 +168,7 @@ const Calculator = () => {
             <div className="Tuning-Box">
               <div className="Calculator-Fee-Box">
                 <div className="Calculator-Fee-Box-Inputs">
-                  <h3>Fees & Price</h3>
-                  <label for="future-fees">Fees for your transaction: </label>
+                  <label for="future-fees">Transaction fees (sats/vByte): </label>
                   <input
                     type="number"
                     name="future-fees"
@@ -199,7 +198,6 @@ const Calculator = () => {
           </div>
         </div>
         <div className="Calculator-Box">
-          <h2>Result</h2>
           <h3>Your transaction size will be <span className="Calculator-Span-Result">{txSize}</span> vBytes. At the provided fee of <span className="Calculator-Span-Result">{futureFee}</span> sats/vBytes you will have to pay a total fee of <span className="Calculator-Span-Result">{futureFee * txSize}</span> sats equivalent to <span className="Calculator-Span-Result">{priceSum}</span> fiatcoins.</h3>
           <div className="Calculator-Result-Box">
             <div>
