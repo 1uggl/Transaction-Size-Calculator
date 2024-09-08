@@ -67,3 +67,44 @@ button {
 button:hover {
   background-color: darkgrey;
 }
+
+@media only screen and (max-width: 1360px) {
+.Tuning-Box {
+    display: flex;
+  }
+  .Calculator-Fee-Box {
+    margin: 0 auto;
+  }
+
+  .Calculator-Price-Box {
+    margin: 0 auto;
+  }
+
+
+}
+
+@media only screen and (max-width: 900px) {
+  .Calculator-User-Input {
+    flex-direction: column;
+    padding: 1em;
+  }
+  .Calculator-Box {
+    margin: 0;
+  }
+
+}
+
+@media only screen and (max-width: 700px) {
+  .Tuning-Box {
+    flex-direction: column;
+  }
+  .Calculator-Fee-Box {
+    margin: 0;
+  }
+
+  .Calculator-Price-Box {
+    margin: 0;
+  }
+
+
+}

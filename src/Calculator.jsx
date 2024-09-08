@@ -181,34 +181,37 @@ const Calculator = () => {
           </div>
           <div className="Calculator-Box">
             <h3>Finetuning for future Transactions</h3>
-            <div className="Calculator-Fee-Box">
-              <div className="Calculator-Fee-Box-Inputs">
-                <label for="future-fees">Fees for your transaction: </label>
-                <input
-                  type="number"
-                  name="future-fees"
-                  id="future-fees"
-                  value={futureFee}
-                  onChange={handleChangeFutureFees}
-                />
-                <label for="future-price">Future fiat price: </label>
-                <input
-                  type="number"
-                  name="future-price"
-                  id="future-price"
-                  value={futurePrice}
-                  onChange={handleChangeFuturePrice}
-                />
+            <div className="Tuning-Box">
+              <div className="Calculator-Fee-Box">
+                <div className="Calculator-Fee-Box-Inputs">
+                  <h3>Fees & Price</h3>
+                  <label for="future-fees">Fees for your transaction: </label>
+                  <input
+                    type="number"
+                    name="future-fees"
+                    id="future-fees"
+                    value={futureFee}
+                    onChange={handleChangeFutureFees}
+                  />
+                  <label for="future-price">Future fiat price: </label>
+                  <input
+                    type="number"
+                    name="future-price"
+                    id="future-price"
+                    value={futurePrice}
+                    onChange={handleChangeFuturePrice}
+                  />
+                </div>
+                <button onClick={handleReset}>Reset Calculator</button>
               </div>
-              <button onClick={handleReset}>Reset Calculator</button>
-            </div>
-            <div className="Calculator-Price-Box">
-              <h3>Price and fee situation at the moment</h3>
-              <p>(Click to set Fee or Price)</p>
-              <p className="setterPriceFee" onClick={handleFastFeeClick}>Fastest Fee: {fastFee} sats/vByte</p>
-              <p className="setterPriceFee" onClick={handleHalfHourFeeClick}>Half Hour Fee: {halfHourFee} sats/vByte</p>
-              <p className="setterPriceFee" onClick={handleDollarClick}>1 BTC = ${dollarPrice}</p>
-              <p className="setterPriceFee" onClick={handleEuroClick}>1 BTC = €{euroPrice}</p>
+              <div className="Calculator-Price-Box">
+                <h3>Price and fee situation at the moment</h3>
+                <p>(Click to set Fee or Price)</p>
+                <p className="setterPriceFee" onClick={handleFastFeeClick}>Fastest Fee: {fastFee} sats/vByte</p>
+                <p className="setterPriceFee" onClick={handleHalfHourFeeClick}>Half Hour Fee: {halfHourFee} sats/vByte</p>
+                <p className="setterPriceFee" onClick={handleDollarClick}>1 BTC = ${dollarPrice}</p>
+                <p className="setterPriceFee" onClick={handleEuroClick}>1 BTC = €{euroPrice}</p>
+              </div>
             </div>
           </div>
         </div>
