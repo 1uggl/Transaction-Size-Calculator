@@ -57,22 +57,6 @@ const Calculator = () => {
     setPriceSum(price.toFixed(2));
   }, [futureFee, futurePrice, txSize])
 
-  const handleDollarClick = () => {
-    setFuturePrice(dollarPrice)
-  }
-
-  const handleEuroClick = () => {
-    setFuturePrice(euroPrice)
-  }
-
-  const handleFastFeeClick = () => {
-    setFutureFee(fastFee)
-  }
-
-  const handleHalfHourFeeClick = () => {
-    setFutureFee(halfHourFee)
-  }
-
   const handleChangeLegacyInputs = event => {
     setLegacyInputs(parseInt(event.target.value) || 0);
   };
@@ -206,11 +190,10 @@ const Calculator = () => {
               </div>
               <div className="Calculator-Price-Box">
                 <h3>Price and fee situation at the moment</h3>
-                <p>(Click to set Fee or Price)</p>
-                <p className="setterPriceFee" onClick={handleFastFeeClick}>Fastest Fee: {fastFee} sats/vByte</p>
-                <p className="setterPriceFee" onClick={handleHalfHourFeeClick}>Half Hour Fee: {halfHourFee} sats/vByte</p>
-                <p className="setterPriceFee" onClick={handleDollarClick}>1 BTC = ${dollarPrice}</p>
-                <p className="setterPriceFee" onClick={handleEuroClick}>1 BTC = €{euroPrice}</p>
+                <p>Fastest Fee: {fastFee} sats/vByte</p>
+                <p>Half Hour Fee: {halfHourFee} sats/vByte</p>
+                <p>1 BTC = ${dollarPrice}</p>
+                <p>1 BTC = €{euroPrice}</p>
               </div>
             </div>
           </div>
