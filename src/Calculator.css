@@ -20,6 +20,7 @@
 
 .Calculator-Fee-Box {
   display: flex;
+  margin-bottom: 1em;
 }
 
 .Calculator-Fee-Box-Inputs {
