@@ -1,5 +1,10 @@
 import './Header.css'
+
 const Header = () => {
+  const handleCopy = () => {
+    navigator.clipboard.writeText("bc1qlxylv26hhrqzngqpax6cnyd3ds6dlrnyr49uw3")
+    alert("Adress copied")
+  }
   return (
     <div className="Header">
       <h1>Transaction Size Calculator</h1>
@@ -7,7 +12,7 @@ const Header = () => {
       <div className="Header-contacts">
         <a target="_blank" href="https://github.com/1uggl/Transaction-Size-Calculator">Github</a>
         <a target="_blank" href="https://x.com/1Uggl">X</a>
-        <a target="_blank" href="https://mempool.space/address/bc1qlxylv26hhrqzngqpax6cnyd3ds6dlrnyr49uw3">Support</a>
+        <a onClick={handleCopy} href="">Support!</a>
       </div>
     </div>
   )
