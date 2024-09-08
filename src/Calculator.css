@@ -18,6 +18,19 @@
   gap: .3em;
 }
 
+.Calculator-Fee-Box {
+  display: flex;
+}
+
+.Calculator-Fee-Box-Inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.setterPriceFee:hover {
+  cursor: pointer;
+}
+
 .Calculator-Result {
   border: 1px solid white;
 }
@@ -43,6 +56,14 @@ input {
 }
 
 button {
-  margin: 1em 0;
+  border-radius: 5px;
+  color: white;
+  background-color: black;
+  margin: 1em;
   padding: 1em;
+  transition: all .2s;
+}
+
+button:hover {
+  background-color: darkgrey;
 }

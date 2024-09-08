@@ -14,6 +14,28 @@ const Calculator = () => {
   const [futureFee, setFutureFee] = useState(100);
   const [futurePrice, setFuturePrice] = useState(1000000);
   const [priceSum, setPriceSum] = useState(1);
+  const [dollarPrice, setDollarPrice] = useState(0);
+  const [euroPrice, setEuroPrice] = useState(0);
+  const [fastFee, setFastFee] = useState(1);
+  const [halfHourFee, setHalfHourFee] = useState(1);
+
+  useEffect(() => {
+    fetch("https://mempool.space/api/v1/fees/recommended")
+      .then(response => response.json())
+      .then(data => {
+        setFastFee(data.fastestFee)
+        setHalfHourFee(data.halfHourFee)
+      })
+  }, [])
+
+  useEffect(() => {
+    fetch("https://mempool.space/api/v1/prices")
+      .then(response => response.json())
+      .then(data => {
+        setDollarPrice(data.USD)
+        setEuroPrice(data.EUR)}
+      )
+  }, [])
 
   useEffect(() => {
     const inputSize = (legacyInputs * 148 + segwitInputs * 68 + taprootInputs * 57.5);
@@ -34,6 +56,22 @@ const Calculator = () => {
     const price = txSize * futureFee * futurePrice / 100000000
     setPriceSum(price.toFixed(2));
   }, [futureFee, futurePrice, txSize])
+
+  const handleDollarClick = () => {
+    setFuturePrice(dollarPrice)
+  }
+
+  const handleEuroClick = () => {
+    setFuturePrice(euroPrice)
+  }
+
+  const handleFastFeeClick = () => {
+    setFutureFee(fastFee)
+  }
+
+  const handleHalfHourFeeClick = () => {
+    setFutureFee(halfHourFee)
+  }
 
   const handleChangeLegacyInputs = event => {
     setLegacyInputs(parseInt(event.target.value) || 0);
@@ -86,7 +124,7 @@ const Calculator = () => {
         </div>
         <div className="Calculator-User-Input">
           <div className="Calculator-Box">
-            <h2>Enter the number and type of your Inputs</h2>
+            <h3>Enter the number and type of your Inputs</h3>
             <h3>Size of inputs: {sumInputsSize}vByte</h3>
             <label htmlFor="legacy-inputs">Legacy Inputs (+148 vByte): </label>
             <input
@@ -114,7 +152,7 @@ const Calculator = () => {
             />
           </div>
           <div className="Calculator-Box">
-            <h2>Enter the number of the outputs</h2>
+            <h3>Enter the number of the outputs</h3>
             <h3>Size of outputs: {sumOutputsSize} vByte</h3>
             <label htmlFor="legacy-outputs">Legacy Outputs (+34 vByte): </label>
             <input
@@ -142,24 +180,36 @@ const Calculator = () => {
             />
           </div>
           <div className="Calculator-Box">
-            <h2>Enter future metrics</h2>
-            <label for="future-fees">Fees for your transaction: </label>
-            <input
-              type="number"
-              name="future-fees"
-              id="future-fees"
-              value={futureFee}
-              onChange={handleChangeFutureFees}
-            />
-            <label for="future-price">Future fiat price: </label>
-            <input
-              type="number"
-              name="future-price"
-              id="future-price"
-              value={futurePrice}
-              onChange={handleChangeFuturePrice}
-            />
-            <button onClick={handleReset}>Reset Calculator</button>
+            <h3>Finetuning for future Transactions</h3>
+            <div className="Calculator-Fee-Box">
+              <div className="Calculator-Fee-Box-Inputs">
+                <label for="future-fees">Fees for your transaction: </label>
+                <input
+                  type="number"
+                  name="future-fees"
+                  id="future-fees"
+                  value={futureFee}
+                  onChange={handleChangeFutureFees}
+                />
+                <label for="future-price">Future fiat price: </label>
+                <input
+                  type="number"
+                  name="future-price"
+                  id="future-price"
+                  value={futurePrice}
+                  onChange={handleChangeFuturePrice}
+                />
+              </div>
+              <button onClick={handleReset}>Reset Calculator</button>
+            </div>
+            <div className="Calculator-Price-Box">
+              <h3>Price and fee situation at the moment</h3>
+              <p>(Click to set Fee or Price)</p>
+              <p className="setterPriceFee" onClick={handleFastFeeClick}>Fastest Fee: {fastFee} sats/vByte</p>
+              <p className="setterPriceFee" onClick={handleHalfHourFeeClick}>Half Hour Fee: {halfHourFee} sats/vByte</p>
+              <p className="setterPriceFee" onClick={handleDollarClick}>1 BTC = ${dollarPrice}</p>
+              <p className="setterPriceFee" onClick={handleEuroClick}>1 BTC = €{euroPrice}</p>
+            </div>
           </div>
         </div>
         <div className="Calculator-Box">
