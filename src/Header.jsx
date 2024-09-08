@@ -1,9 +1,12 @@
+import { useState } from 'react'
 import './Header.css'
 
 const Header = () => {
-  const handleCopy = () => {
+  const [supportLink, setSupportLink] = useState("Supportadress")
+  const handleCopy = event => {
+event.preventDefault();
     navigator.clipboard.writeText("bc1qlxylv26hhrqzngqpax6cnyd3ds6dlrnyr49uw3")
-    alert("Adress copied")
+    setSupportLink("Adress copied!")
   }
   return (
     <div className="Header">
@@ -12,7 +15,7 @@ const Header = () => {
       <div className="Header-contacts">
         <a target="_blank" href="https://github.com/1uggl/Transaction-Size-Calculator">Github</a>
         <a target="_blank" href="https://x.com/1Uggl">X</a>
-        <a onClick={handleCopy} href="">Support!</a>
+        <a onClick={handleCopy} href="Copy Adress">{supportLink}</a>
       </div>
     </div>
   )
