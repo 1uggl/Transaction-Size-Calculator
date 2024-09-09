@@ -2,11 +2,14 @@ import { useState } from 'react'
 import './Header.css'
 
 const Header = () => {
-  const [supportLink, setSupportLink] = useState("Supportadress")
+  const [supportLink, setSupportLink] = useState("Support")
   const handleCopy = event => {
 event.preventDefault();
     navigator.clipboard.writeText("bc1qlxylv26hhrqzngqpax6cnyd3ds6dlrnyr49uw3")
     setSupportLink("Adress copied!")
+    setTimeout(() => {
+     setSupportLink("Support") 
+    }, 2000);
   }
   return (
     <div className="Header">

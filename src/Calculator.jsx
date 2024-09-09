@@ -104,7 +104,7 @@ const Calculator = () => {
     <>
       <div className="Calculator">
         <div className="Calculator-Box">
-          <h3>GM! Small UTXOs get to dust in high fee enviroments. Use this tool to visualize the impact of multiple inputs on the transaction size. Use the fee and fiat price input to see, how expensive moving your stack will be in enviroments e.g. with minimum fees at 100 sats/vByte and fiat price at $ 1,000,000!</h3>
+          <h3>GM! Small UTXOs get to dust in high fee enviroments. Use this tool to visualize the impact of multiple inputs on the transaction size. Use the fee and fiat price input to see, how expensive moving your stack will be in enviroments e.g. with minimum fees at 100 sats/vByte and fiat price at $1,000,000!</h3>
         </div>
         <div className="Calculator-User-Input">
           <div className="Calculator-Box">
